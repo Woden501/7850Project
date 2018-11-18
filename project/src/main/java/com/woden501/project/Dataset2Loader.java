@@ -63,6 +63,8 @@ public class Dataset2Loader {
 		toDisk(randomAutismAdultHash.get(0.9), "0.9RandomAutismAdults.arff");
 		randomizeAdults(1.0);
 		toDisk(randomAutismAdultHash.get(1.0), "1.0RandomAutismAdults.arff");
+		
+		System.out.println("Data successfully loaded, modified, randomized, and written to disk");
 	}
 	
 	private void generateAdult(String line) {

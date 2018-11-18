@@ -35,7 +35,10 @@ public class Adult {
 		this.capitalLoss = Integer.parseInt(capitalLoss);
 		this.hoursPerWeek = Integer.parseInt(hoursPerWeek);
 		this.nativeCountry = nativeCountry;
-		this.salary = salary;
+		if (salary.equals("<=50K"))
+			this.salary = "NO";
+		else
+			this.salary = "YES";
 	}
 
 	public Adult(int age, String workclass, int fnlwgt, String education, int educationNum, String maritalStatus,
@@ -100,10 +103,10 @@ public class Adult {
 	}
 
 	private String negate(String value) {
-		if (value.equals("<=50K"))
-			return ">50K";
-		else if (value.equals(">50K"))
-			return "<=50K";
+		if (value.equals("NO"))
+			return "YES";
+		else if (value.equals("YES"))
+			return "NO";
 		else if (value.equals("0"))
 			return "1";
 		else

@@ -8,15 +8,12 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        System.out.println( "Begining loading of the data..." );
         
         // Load the Data
         Dataset1Loader ds1 = new Dataset1Loader();
+        
         Dataset2Loader ds2 = new Dataset2Loader();
-        
-        System.out.println("Randomized!");
-        
-        // Randomize the data
         
         // Pass the data into unmodified ID3
         

@@ -63,6 +63,8 @@ public class Dataset1Loader {
 		toDisk(randomAdultsHash.get(0.9), "0.9RandomAdults.arff");
 		randomizeAdults(1.0);
 		toDisk(randomAdultsHash.get(1.0), "1.0RandomAdults.arff");
+		
+		System.out.println("Data successfully loaded, modified, randomized, and written to disk");
 	}
 
 	private void generateAdult(String line) {
@@ -241,7 +243,7 @@ public class Dataset1Loader {
 		output += "@ATTRIBUTE capital-loss {0,1}\n";
 		output += "@ATTRIBUTE hours-per-week {0,1}\n";
 		output += "@ATTRIBUTE native-country {0,1}\n";
-		output += "@ATTRIBUTE class {<=50K, >50k}\n";
+		output += "@ATTRIBUTE class {NO,YES}\n";
 		output += "\n@DATA\n";
 		
 		for (Adult adult : adults) {
