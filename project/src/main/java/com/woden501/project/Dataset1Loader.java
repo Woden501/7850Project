@@ -30,6 +30,7 @@ public class Dataset1Loader {
 			Stream<String> stream = Files
 					.lines(Path.of(Dataset1Loader.class.getClassLoader().getResource("adult.data").toURI()));
 			stream.forEach(line -> generateAdult(line));
+			stream.close();
 		} catch (Exception e) {
 			System.out.println("Error encountered reading dataset1. Exception: " + e.getMessage());
 			System.out.println("Exiting...");
@@ -148,127 +149,39 @@ public class Dataset1Loader {
 		
 		// Set binary values
 		for (int i = 0; i < adults.size(); i++) {
-			if (i < median)
+			if (i < median) {
 				ageList.get(i).adult.setAge(0);
-			else
-				ageList.get(i).adult.setAge(1);
-			if (i < median)
 				workclassList.get(i).adult.setWorkclass("0");
-			else
-				workclassList.get(i).adult.setWorkclass("1");
-			if (i < median)
 				fnlwgtList.get(i).adult.setFnlwgt(0);
-			else
-				fnlwgtList.get(i).adult.setFnlwgt(1);
-			if (i < median)
 				educationList.get(i).adult.setEducation("0");
-			else
-				educationList.get(i).adult.setEducation("1");
-			if (i < median)
 				educationNumList.get(i).adult.setEducationNum(0);
-			else
-				educationNumList.get(i).adult.setEducationNum(1);
-			if (i < median)
 				maritalStatusList.get(i).adult.setMaritalStatus("0");
-			else
-				maritalStatusList.get(i).adult.setMaritalStatus("1");
-			if (i < median)
 				occupationList.get(i).adult.setOccupation("0");
-			else
-				occupationList.get(i).adult.setOccupation("1");
-			if (i < median)
 				relationshipList.get(i).adult.setRelationship("0");
-			else
-				relationshipList.get(i).adult.setRelationship("1");
-			if (i < median)
 				raceList.get(i).adult.setRace("0");
-			else
-				raceList.get(i).adult.setRace("1");
-			if (i < median)
 				sexList.get(i).adult.setSex("0");
-			else
-				sexList.get(i).adult.setSex("1");
-			if (i < median)
 				capitalGainList.get(i).adult.setCapitalGain(0);
-			else
-				capitalGainList.get(i).adult.setCapitalGain(1);
-			if (i < median)
 				capitalLossList.get(i).adult.setCapitalLoss(0);
-			else
-				capitalLossList.get(i).adult.setCapitalLoss(1);
-			if (i < median)
 				hoursPerWeekList.get(i).adult.setHoursPerWeek(0);
-			else
-				hoursPerWeekList.get(i).adult.setHoursPerWeek(1);
-			if (i < median)
 				nativeCountryList.get(i).adult.setNativeCountry("0");
-			else
+			} else {
+				ageList.get(i).adult.setAge(1);
+				workclassList.get(i).adult.setWorkclass("1");
+				fnlwgtList.get(i).adult.setFnlwgt(1);
+				educationList.get(i).adult.setEducation("1");
+				educationNumList.get(i).adult.setEducationNum(1);
+				maritalStatusList.get(i).adult.setMaritalStatus("1");
+				occupationList.get(i).adult.setOccupation("1");
+				relationshipList.get(i).adult.setRelationship("1");
+				raceList.get(i).adult.setRace("1");
+				sexList.get(i).adult.setSex("1");
+				capitalGainList.get(i).adult.setCapitalGain(1);
+				capitalLossList.get(i).adult.setCapitalLoss(1);
+				hoursPerWeekList.get(i).adult.setHoursPerWeek(1);
 				nativeCountryList.get(i).adult.setNativeCountry("1");
+			}
 		}
-		
-//		// Set all binary values
-//		for (Adult adult : adults) {
-//			adult.setAge(ageValues.get(adult.getAge()));
-//			adult.setWorkclass(workclassValues.get(adult.getWorkclass()));
-//			adult.setFnlwgt(fnlwgtValues.get(adult.getFnlwgt()));
-//			adult.setEducation(educationValues.get(adult.getEducation()));
-//			adult.setEducationNum(educationNumValues.get(adult.getEducationNum()));
-//			adult.setMaritalStatus(maritalStatusValues.get(adult.getMaritalStatus()));
-//			adult.setOccupation(occupationValues.get(adult.getOccupation()));
-//			adult.setRelationship(relationshipValues.get(adult.getRelationship()));
-//			adult.setRace(raceValues.get(adult.getRace()));
-//			adult.setSex(sexValues.get(adult.getSex()));
-//			adult.setCapitalGain(capitalGainValues.get(adult.getCapitalGain()));
-//			adult.setCapitalLoss(capitalLossValues.get(adult.getCapitalLoss()));
-//			adult.setHoursPerWeek(hoursPerWeekValues.get(adult.getHoursPerWeek()));
-//			adult.setNativeCountry(nativeCountryValues.get(adult.getNativeCountry()));
-//			adult.setSalary(salaryValues.get(adult.getSalary()));
-//		}
-		
-		System.out.println("PAUSE");
 	}
-	
-//	public HashMap<Integer, Integer> binarizeIntegerValues(int median, ArrayList<IntegerPair> list) {
-//		HashMap<Integer, Integer> values = new HashMap<>();
-//		
-//		for (int i = 0; i < median; i++) {
-//			list.get(i).adult.set
-//		}
-//		
-//		for (int i = 0; i < median; i++) {
-//			values.put(list.get(i).value, 0);
-//		}
-//		for (int i = median; i < list.size(); i++) {
-//			values.put(list.get(i).value, 1);
-//		}
-//		
-//		return values;
-//	}
-//	
-//	public HashMap<String, String> binarizeStringValues(int median, ArrayList<StringPair> list) {
-//		HashMap<String, String> values = new HashMap<>();
-//		
-//		for (int i = 0; i < median; i++) {
-//			values.put(list.get(i).value, "0");
-//		}
-//		for (int i = median; i < list.size(); i++) {
-//			values.put(list.get(i).value, "1");
-//		}
-//		
-//		return values;
-//	}
-	
-//	public HashMap<Integer, Integer> addIntToMap(int i, HashMap<Integer, Integer> map) {
-//		Integer currentCount = map.get(i);
-//		
-//		if (currentCount == null) {
-//			map.put((Integer) i, 1);
-//		} else {
-//			map.put((Integer) i, currentCount + 1);
-//		}
-//		
-//		return map;
-//	}
 
 	public String getFileContents() {
 		return fileContents;
@@ -314,20 +227,20 @@ public class Dataset1Loader {
 	
 	public void toDisk(List<Adult> adults, String filename) {
 		String output = "@RELATION adult\n";
-		output += "@ATTRIBUTE age NUMERIC\n";
-		output += "@ATTRIBUTE workclass NUMERIC\n";
-		output += "@ATTRIBUTE fnlwgt NUMERIC\n";
-		output += "@ATTRIBUTE education NUMERIC\n";
-		output += "@ATTRIBUTE education-num NUMERIC\n";
-		output += "@ATTRIBUTE marital-status NUMERIC\n";
-		output += "@ATTRIBUTE occupation NUMERIC\n";
-		output += "@ATTRIBUTE relationship NUMERIC\n";
-		output += "@ATTRIBUTE race NUMERIC\n";
-		output += "@ATTRIBUTE sex NUMERIC\n";
-		output += "@ATTRIBUTE capital-gain NUMERIC\n";
-		output += "@ATTRIBUTE capital-loss NUMERIC\n";
-		output += "@ATTRIBUTE hours-per-week NUMERIC\n";
-		output += "@ATTRIBUTE native-country NUMERIC\n";
+		output += "@ATTRIBUTE age {0,1}\n";
+		output += "@ATTRIBUTE workclass {0,1}\n";
+		output += "@ATTRIBUTE fnlwgt {0,1}\n";
+		output += "@ATTRIBUTE education {0,1}\n";
+		output += "@ATTRIBUTE education-num {0,1}\n";
+		output += "@ATTRIBUTE marital-status {0,1}\n";
+		output += "@ATTRIBUTE occupation {0,1}\n";
+		output += "@ATTRIBUTE relationship {0,1}\n";
+		output += "@ATTRIBUTE race {0,1}\n";
+		output += "@ATTRIBUTE sex {0,1}\n";
+		output += "@ATTRIBUTE capital-gain {0,1}\n";
+		output += "@ATTRIBUTE capital-loss {0,1}\n";
+		output += "@ATTRIBUTE hours-per-week {0,1}\n";
+		output += "@ATTRIBUTE native-country {0,1}\n";
 		output += "@ATTRIBUTE class {<=50K, >50k}\n";
 		output += "\n@DATA\n";
 		

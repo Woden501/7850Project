@@ -12,6 +12,7 @@ public class App
         
         // Load the Data
         Dataset1Loader ds1 = new Dataset1Loader();
+        Dataset2Loader ds2 = new Dataset2Loader();
         
         System.out.println("Randomized!");
         
